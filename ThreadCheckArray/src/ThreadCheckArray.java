@@ -3,6 +3,7 @@ import java.util.ArrayList;
 /**
  * @author Saar
  * @author Vladik
+ * 
  * @version 1
  *
  */
@@ -14,8 +15,9 @@ public class ThreadCheckArray implements Runnable
 	ArrayList <Integer> array;
 	int b;
 	
-	/** Description of ThreadCheckArray(SharedData sd)
-	 * @param sd sd
+	/** constructor for new SharedData and create a winArray
+	 * and apply to b the b from the shared data
+	 * @param sd  parameter for the new SharedData
 	 */
 	public ThreadCheckArray(SharedData sd) 
 	{
@@ -28,9 +30,10 @@ public class ThreadCheckArray implements Runnable
 		winArray = new boolean[array.size()];
 	}
 	
-	/**Description of rec(int n, int b)
-	 * @param n n
-	 * @param b b
+	/**method that go recursively through the array to find if there are 2 numbers in the
+	 * array that their sum equals to the user input
+	 * @param n the size of the array
+	 * @param b an int number that sent to the rec method
 	 */
 	void rec(int n, int b)
 	{
@@ -66,6 +69,10 @@ public class ThreadCheckArray implements Runnable
 	}
 
 
+	/**the run method is running 2 strings on the array to find 2 numbers that sums to the user input
+	 * if they are found they set the flag and the winArray to true and stop the other thread
+	 *
+	 */
 	public void run() {
 		if (array.size()!= 1)
 			if (Thread.currentThread().getName().equals("thread1"))
