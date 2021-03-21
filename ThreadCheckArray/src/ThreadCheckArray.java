@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * @author Saar
+ * @author Vladik
+ * @version 1
+ *
+ */
 public class ThreadCheckArray implements Runnable 
 {
 	private boolean flag;
@@ -8,6 +14,9 @@ public class ThreadCheckArray implements Runnable
 	ArrayList <Integer> array;
 	int b;
 	
+	/** Description of ThreadCheckArray(SharedData sd)
+	 * @param sd sd
+	 */
 	public ThreadCheckArray(SharedData sd) 
 	{
 		this.sd = sd;	
@@ -19,6 +28,10 @@ public class ThreadCheckArray implements Runnable
 		winArray = new boolean[array.size()];
 	}
 	
+	/**Description of rec(int n, int b)
+	 * @param n n
+	 * @param b b
+	 */
 	void rec(int n, int b)
 	{
 		synchronized (sd) 
@@ -51,6 +64,7 @@ public class ThreadCheckArray implements Runnable
 		}	
 		rec(n-1, b);
 	}
+
 
 	public void run() {
 		if (array.size()!= 1)
